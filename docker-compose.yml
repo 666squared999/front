@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  client:
+    build: .
+    restart: unless-stopped
+    network_mode: host
+    container_name: client

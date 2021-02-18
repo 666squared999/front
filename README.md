@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Client (Final Assignment Frontend Part) [![Build Status]()
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is our solution to the final assignment of `int20h` hackathon. The task description is [here]().
 
-## Available Scripts
+Website  
+[https://squared.cf/](https://squared.cf/)
 
-In the project directory, you can run:
+## Getting Started
 
-### `yarn start`
+To run on your local machine for development and testing purposes, clone this repository and run the next commands from the root directory:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+yarn install
+yarn start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The app will run on `http://localhost:3000/`
 
-### `yarn test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You must have the [Node.js](https://nodejs.org/) runtime installed and [Yarn](https://yarnpkg.com/getting-started/install) package manager
 
-### `yarn build`
+## Deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+# Builds the app for production
+docker-compose up
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [ReactJS](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [Typescript](https://www.typescriptlang.org/) - Typed JavaScript
+- [Sass](https://sass-lang.com/) - CSS preprocessor
+- [ESLint](https://eslint.org/) - Pluggable JavaScript linter
+- [Prettier](https://prettier.io/) - Opinionated Code Formatter
+- [Docker](https://www.docker.com/) - Open platform for developing, shipping, and running applications
 
-### `yarn eject`
+## Authors
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Vladyslav Stepaniuk** - [VladosK0k0s](https://github.com/VladosK0k0s)
+- **Anna Kryva** - [anna-kryva](https://github.com/anna-kryva)
+- **Nikolay Fedurko** - [B1Z0N](https://github.com/B1Z0N)
+- **Anton Osetrov** - [osetr](https://github.com/osetr)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Acknowledgments
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Coming soon
