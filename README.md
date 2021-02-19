@@ -1,4 +1,6 @@
-# Client (Final Assignment Frontend Part) [![Build Status]()
+# Client (Final Assignment Frontend Part) 
+
+# Frontend status [![Build Status](https://jenkins.squared.cf/job/build%20Client/badge/icon)](https://jenkins.squared.cf/job/build%20Client/)
 
 This is our solution to the final assignment of `int20h` hackathon. The task description is [here]().
 
