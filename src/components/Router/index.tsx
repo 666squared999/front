@@ -6,6 +6,7 @@ import { Home } from "../../pages/Home";
 import { Landing } from "../../pages/Landing";
 import { Login } from "../../pages/Login";
 import { SignIn } from "../../pages/SignIn";
+import { Header } from "../Header";
 import { Logo } from "../Logo";
 import "./style.scss";
 
@@ -19,44 +20,46 @@ export const HOME_PAGE = "/home";
 export const Router: FC = () => {
     return (
         <BrowserRouter>
-            <Link to={LANDING_PATH}>
-                <Logo />
-            </Link>
-            <nav className="Router">
-                <ul
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                    }}>
-                    <li>
-                        <Link to={SEARCH_PATH} className="link">
-                            SEARCH
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={ABOUT_PATH} className="link">
-                            ABOUT
-                        </Link>
-                    </li>
-                    <li className="Auth">
-                        <Link to={LOGIN_PATH} className="link auth">
-                            LOGIN
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={SIGNIN_PATH} className="link auth">
-                            <Button
-                                style={{ fontSize: "1rem" }}
-                                variant="contained"
-                                color="secondary"
-                                size="small">
-                                Sign In
-                            </Button>
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            <Header>
+                <Link to={LANDING_PATH}>
+                    <Logo />
+                </Link>
+                <nav className="Router">
+                    <ul
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                        }}>
+                        <li>
+                            <Link to={SEARCH_PATH} className="link">
+                                SEARCH
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={ABOUT_PATH} className="link">
+                                ABOUT
+                            </Link>
+                        </li>
+                        <li className="Auth">
+                            <Link to={LOGIN_PATH} className="link auth">
+                                LOGIN
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={SIGNIN_PATH} className="link auth">
+                                <Button
+                                    style={{ fontSize: "1rem" }}
+                                    variant="contained"
+                                    color="secondary"
+                                    size="small">
+                                    Sign In
+                                </Button>
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </Header>
             <Switch>
                 <Route path={LANDING_PATH}>
                     <Landing />

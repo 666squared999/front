@@ -1,7 +1,7 @@
 import React from "react";
 import "./assets/style.scss";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { Header } from "./components/Header";
+import { Router } from "./components/Router";
 
 const theme = createMuiTheme({
     palette: {
@@ -18,7 +18,7 @@ function App() {
     return (
         <div className="App">
             <ThemeProvider theme={theme}>
-                <Header />
+                <Router />
             </ThemeProvider>
         </div>
     );

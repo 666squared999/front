@@ -2,10 +2,6 @@ import React, { FC } from "react";
 import { Router } from "../Router";
 import "./style.scss";
 
-export const Header: FC = () => {
-    return (
-        <div className="Header">
-            <Router />
-        </div>
-    );
+export const Header: FC = ({ children }) => {
+    return <div className="Header">{children}</div>;
 };
