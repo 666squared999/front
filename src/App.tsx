@@ -1,6 +1,8 @@
 import React from "react";
 import "./assets/style.scss";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Search } from "./pages/Search";
 
 const theme = createMuiTheme({
     palette: {
@@ -16,7 +18,22 @@ const theme = createMuiTheme({
 function App() {
     return (
         <div className="App">
-            <ThemeProvider theme={theme}>{}</ThemeProvider>
+            <ThemeProvider theme={theme}>
+                <Router>
+                    <nav>
+                        <ul>
+                            <li>
+                                <Link to="/search">Search</Link>
+                            </li>
+                        </ul>
+                    </nav>
+                    <Switch>
+                        <Route path="/search">
+                            <Search />
+                        </Route>
+                    </Switch>
+                </Router>
+            </ThemeProvider>
         </div>
     );
 }
