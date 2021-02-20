@@ -1,0 +1,27 @@
+@import "../../assets/style.scss";
+
+.LandingOptions {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    text-align: center;
+    background-color: #d4d4e4;
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .option {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 50%;
+    }
+
+    .button {
+        margin-top: 1rem;
+    }
+}
