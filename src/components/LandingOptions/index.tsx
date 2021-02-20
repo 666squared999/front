@@ -14,7 +14,10 @@ export const LandingOptions: FC = () => {
                 <div className="option left">
                     <h3>Have you have found a pet?</h3>
                     <div className="button">
-                        <Button variant="contained" color="primary">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            size="large">
                             Show lost pets
                         </Button>
                     </div>
