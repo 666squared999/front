@@ -1,8 +1,13 @@
-import React, { FC } from "react";
-import "./style.scss";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { Logo } from "../Logo";
 import { Button } from "@material-ui/core";
+import React, { FC } from "react";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { About } from "../../pages/About";
+import { Home } from "../../pages/Home";
+import { Landing } from "../../pages/Landing";
+import { Login } from "../../pages/Login";
+import { SignIn } from "../../pages/SignIn";
+import { Logo } from "../Logo";
+import "./style.scss";
 
 export const LANDING_PATH = "/";
 export const SEARCH_PATH = "/search";
@@ -53,12 +58,22 @@ export const Router: FC = () => {
                 </ul>
             </nav>
             <Switch>
-                <Route path={LANDING_PATH}></Route>
+                <Route path={LANDING_PATH}>
+                    <Landing />
+                </Route>
                 <Route path={SEARCH_PATH}></Route>
-                <Route path={ABOUT_PATH}></Route>
-                <Route path={LOGIN_PATH}></Route>
-                <Route path={SIGNIN_PATH}></Route>
-                <Route path={HOME_PAGE}></Route>
+                <Route path={ABOUT_PATH}>
+                    <About />
+                </Route>
+                <Route path={LOGIN_PATH}>
+                    <Login />
+                </Route>
+                <Route path={SIGNIN_PATH}>
+                    <SignIn />
+                </Route>
+                <Route path={HOME_PAGE}>
+                    <Home />
+                </Route>
             </Switch>
         </BrowserRouter>
     );
