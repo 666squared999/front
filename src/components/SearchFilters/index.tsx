@@ -7,117 +7,48 @@ import {
     TextField,
 } from "@material-ui/core";
 import "./style.scss";
+import { AnimalType, FilterData, SexType } from "../../utils/types";
 
-const animalTypes = [
-    { key: "dog", value: "Dog" },
-    { key: "cat", value: "Cat" },
-    { key: "parrot", value: "Parrot" },
-    { key: "other", value: "Other" },
-];
-const animalSex = [
-    { key: "female", value: "Female" },
-    { key: "male", value: "Male" },
-    { key: "unknown", value: "Unknown" },
-];
+const animalTypes = ["dog", "cat", "parrot", "other", ""];
+const sexTypes = ["male", "female", "unknown", ""];
 
-const animalFeatures = [
-    {
-        key: "Short wool",
-        value: false,
-    },
-    {
-        key: "Long wool",
-        value: false,
-    },
-    {
-        key: "Short tail",
-        value: false,
-    },
-    {
-        key: "Long tail",
-        value: false,
-    },
-    {
-        key: "Without tail",
-        value: false,
-    },
-    {
-        key: "Sharp ears",
-        value: false,
-    },
-    {
-        key: "Sloping ears",
-        value: false,
-    },
-    {
-        key: "Long face",
-        value: false,
-    },
-    {
-        key: "Oblong face",
-        value: false,
-    },
-    {
-        key: "Short face",
-        value: false,
-    },
-    {
-        key: "Spotted",
-        value: false,
-    },
-    {
-        key: "Striped",
-        value: false,
-    },
-    {
-        key: "Monotonous",
-        value: false,
-    },
-];
+interface IProps {
+    data: FilterData;
+    setData: (data: FilterData) => void;
+    handleSearchButtonClick: () => void;
+}
 
-export const SearchFilters = () => {
-    const [typeValue, setTypeValue] = useState("");
-    const [sexValue, setSexValue] = useState("");
-    const [descriptionValue, setDescriptionValue] = useState("");
-    const [featureValues, setFeatureValues] = useState(animalFeatures);
+export const SearchFilters = ({
+    data,
+    setData,
+    handleSearchButtonClick,
+}: IProps) => {
+    const { animalType, sexType, description, features } = data;
 
     const handleDescriptionhValueChange = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
-        setDescriptionValue(event.currentTarget.value);
+        setData({ ...data, description: event.target.value });
     };
 
     const handleTypeValueChange = (
         event: React.ChangeEvent<{ value: unknown }>,
     ): void => {
-        setTypeValue(event.target.value as string);
+        setData({ ...data, animalType: event.target.value as AnimalType });
     };
 
     const handleSexValueChange = (
         event: React.ChangeEvent<{ value: unknown }>,
     ): void => {
-        setSexValue(event.target.value as string);
+        setData({ ...data, sexType: event.target.value as SexType });
     };
 
     const handleFeatureChange = (key: string): void => {
-        const newFeatureValues = [...animalFeatures];
-        const searchedKeyIndex = newFeatureValues.findIndex(
-            (el) => el.key === key,
-        );
-        newFeatureValues[searchedKeyIndex].value = !newFeatureValues[
-            searchedKeyIndex
-        ].value;
-        setFeatureValues(newFeatureValues);
-    };
-
-    const handleSearchButtonClick = () => {
-        const data = {
-            type: typeValue,
-            sex: sexValue,
-            description: descriptionValue,
-            feature: featureValues,
-        };
-        console.log(" Fetching, ", data);
+        const newFeatures = [...data.features];
+        const searchedKeyIndex = newFeatures.findIndex((el) => el.key === key);
+        newFeatures[searchedKeyIndex].value = !newFeatures[searchedKeyIndex]
+            .value;
+        setData({ ...data, features: newFeatures });
     };
 
     return (
@@ -127,13 +58,13 @@ export const SearchFilters = () => {
                     select
                     className="textInput"
                     label="Pet Type"
-                    value={typeValue}
+                    value={animalType}
                     onChange={handleTypeValueChange}
                     variant="outlined">
-                    {animalTypes.map(({ key, value }) => {
+                    {animalTypes.map((el) => {
                         return (
-                            <MenuItem key={key} value={value}>
-                                {value}
+                            <MenuItem key={el} value={el}>
+                                {el}
                             </MenuItem>
                         );
                     })}
@@ -142,13 +73,13 @@ export const SearchFilters = () => {
                     select
                     className="textInput"
                     label="Pet Sex"
-                    value={sexValue}
+                    value={sexType}
                     onChange={handleSexValueChange}
                     variant="outlined">
-                    {animalSex.map(({ key, value }) => {
+                    {sexTypes.map((el) => {
                         return (
-                            <MenuItem key={key} value={value}>
-                                {value}
+                            <MenuItem key={el} value={el}>
+                                {el}
                             </MenuItem>
                         );
                     })}
@@ -157,12 +88,12 @@ export const SearchFilters = () => {
                     className="textInput"
                     color="primary"
                     onChange={handleDescriptionhValueChange}
-                    value={descriptionValue}
+                    value={description}
                     label="Description"
                     variant="outlined"
                 />
                 <div>
-                    {featureValues.map(({ key, value }) => {
+                    {features.map(({ key, value }) => {
                         return (
                             <FormControlLabel
                                 control={
