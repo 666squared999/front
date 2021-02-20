@@ -11,5 +11,17 @@ body {
         font-size: 14px;
     }
 }
-$color1: #ff7306;
-$color2: #45190e;
+$color1: #943435;
+$color2: #32237e;
+
+ol,
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
