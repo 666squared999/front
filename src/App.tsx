@@ -1,14 +1,15 @@
 import React from "react";
 import "./assets/style.scss";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { Header } from "./components/Header";
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: "#45190E",
+            main: "#943435",
         },
         secondary: {
-            main: "#FF7306",
+            main: "#32237e",
         },
     },
 });
@@ -16,7 +17,9 @@ const theme = createMuiTheme({
 function App() {
     return (
         <div className="App">
-            <ThemeProvider theme={theme}>{}</ThemeProvider>
+            <ThemeProvider theme={theme}>
+                <Header />
+            </ThemeProvider>
         </div>
     );
 }
