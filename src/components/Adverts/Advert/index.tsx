@@ -8,12 +8,26 @@ interface IProps {
 }
 
 export const AdvertBlock = ({ data }: IProps) => {
-    const { photos, breed, animal_type, type, location, title, sex } = data;
+    const {
+        photos,
+        photo_urls,
+        breed,
+        animal_type,
+        type,
+        location,
+        title,
+        sex,
+    } = data;
     const [isImageExists, setIsImageExists] = useState(false);
     console.log(data);
     useEffect(() => {
-        setIsImageExists(photos.length > 1);
-    }, [photos]);
+        if (photos) {
+            setIsImageExists(photos.length > 1);
+        }
+        if (photo_urls) {
+            setIsImageExists(photo_urls.length > 1);
+        }
+    }, [photos, photo_urls]);
 
     return (
         <div className="Advert">
