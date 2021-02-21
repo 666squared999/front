@@ -5,7 +5,7 @@ import { signin } from "../../api/requests";
 import { useAuthContext } from "../../store/AuthContext";
 import "./style.scss";
 
-export const Signin: FC = () => {
+export const SignIn: FC = () => {
     const { login } = useAuthContext();
 
     const [username, setUsername] = useState("");

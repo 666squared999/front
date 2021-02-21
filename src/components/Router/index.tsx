@@ -6,7 +6,7 @@ import { Home } from "../../pages/Home";
 import { Landing } from "../../pages/Landing";
 import { Login } from "../../pages/Login";
 import { Search } from "../../pages/Search";
-import { Signin } from "../../pages/Signin";
+import { SignIn } from "../../pages/SignIn";
 import { useAuthContext } from "../../store/AuthContext";
 import { Header } from "../Header";
 import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
@@ -55,7 +55,7 @@ export const Router: FC = () => {
                     path={SIGNIN_PATH}
                     render={({ location }) =>
                         !accessToken ? (
-                            <Signin />
+                            <SignIn />
                         ) : (
                             <Redirect
                                 to={{

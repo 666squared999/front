@@ -4,26 +4,29 @@ import petAlt from "../../../assets/images/petAlt.png";
 import "./style.scss";
 
 interface IProps {
-    data: Advert;
+    data: any;
 }
 
 export const AdvertBlock = ({ data }: IProps) => {
-    const { photo_urls, breed, animal_type, type, location } = data;
+    const { photos, breed, animal_type, type, location, title, sex } = data;
     const [isImageExists, setIsImageExists] = useState(false);
-
+    console.log(data);
     useEffect(() => {
-        setIsImageExists(photo_urls.length > 1);
-    }, [photo_urls]);
+        setIsImageExists(photos.length > 1);
+    }, [photos]);
 
     return (
         <div className="Advert">
             {isImageExists ? (
-                <img src={photo_urls[0]} alt="Pet Image" />
+                <img src={photos[0]} alt="Pet Image" />
             ) : (
                 <img src={petAlt} alt="Pet Image" />
             )}
             <p>
-                {animal_type}, {breed}
+                {animal_type}
+                {breed ? ", " + breed : ""}
+                {title ? ", " + title : ""}
+                {sex ? ", " + sex : ""}
             </p>
             <p>
                 {type === "found" ? "Found in " : "Lost in"} {location}

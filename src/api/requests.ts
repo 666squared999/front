@@ -58,4 +58,11 @@ export const createAdvert = async (token: string, data: any) =>
         .then((response) => response.json())
         .catch(console.log);
 
+export const getUserAdverts = async (token: string, id: number) =>
+    request(`api/v1/adverts?user=${id}`, "GET", undefined, {
+        Authorization: `Bearer ${token}`,
+    })
+        .then((response) => response.json())
+        .catch(console.log);
+
 export default request;

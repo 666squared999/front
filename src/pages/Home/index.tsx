@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
-import { getUserInfo } from "../../api/requests";
+import { getUserAdverts, getUserInfo } from "../../api/requests";
+import { AdvertBlock } from "../../components/Adverts/Advert";
 import { CreateAdvert } from "../../components/CreateAdvert";
 import { User } from "../../components/User";
 import { useAuthContext } from "../../store/AuthContext";
@@ -13,6 +14,8 @@ export const Home: FC = () => {
         email: "",
     });
 
+    const [adverts, setAdverts] = useState<any>();
+
     useEffect(() => {
         if (!accessToken) {
             return;
@@ -21,16 +24,31 @@ export const Home: FC = () => {
         (async () => {
             const state = await getUserInfo(accessToken);
             setUser(state);
+            const data = await getUserAdverts(accessToken, state.id);
+            setAdverts(data.results);
         })();
     }, [accessToken]);
+
+    const handleUpdate = async () => {
+        if (!accessToken) {
+            return;
+        }
+        const data = await getUserAdverts(accessToken, user.id);
+        setAdverts(data.results);
+    };
 
     return (
         <div className="Home">
             <User logout={logout} {...user} />
             <div className="inner">
-                <div className="left"></div>
+                <div className="left">
+                    {adverts &&
+                        adverts.map((el: any) => {
+                            return <AdvertBlock data={el} />;
+                        })}
+                </div>
                 <div className="right">
-                    <CreateAdvert />
+                    <CreateAdvert handleUpdate={handleUpdate} />
                 </div>
             </div>
         </div>

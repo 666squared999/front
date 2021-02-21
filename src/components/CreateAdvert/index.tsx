@@ -14,7 +14,7 @@ interface Advert {
     description?: string;
 }
 
-export const CreateAdvert: FC = () => {
+export const CreateAdvert = ({ handleUpdate }: any) => {
     const [advert, setAdvert] = useState<Advert>();
 
     const { accessToken } = useAuthContext();
@@ -50,7 +50,8 @@ export const CreateAdvert: FC = () => {
 
         const resp = await createAdvert(accessToken, advert);
         console.log(resp);
-    }, [accessToken, advert]);
+        handleUpdate();
+    }, [accessToken, advert, handleUpdate]);
 
     return (
         <div className="CreateAdvert">
