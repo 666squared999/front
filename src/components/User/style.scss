@@ -1,0 +1,33 @@
+@import "../../assets/style.scss";
+
+.User {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    .textContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .right {
+        margin-left: 3rem;
+    }
+
+    span {
+        margin-right: 1rem;
+    }
+
+    .input {
+        width: 300px;
+        max-width: 300px;
+    }
+}

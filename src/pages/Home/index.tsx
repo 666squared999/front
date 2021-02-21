@@ -1,14 +1,38 @@
-import { FC } from "react";
-import { FilterData } from "../../utils/types";
+import React, { FC, useEffect, useState } from "react";
+import { getUserInfo } from "../../api/requests";
+import { CreateAdvert } from "../../components/CreateAdvert";
+import { User } from "../../components/User";
+import { useAuthContext } from "../../store/AuthContext";
 import "./style.scss";
 
-export const Home = () => {
-    const access =
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDU0NTUyLCJqdGkiOiI2OWI2NTRiMmVjZWM0MzIxOTA2MzcyYzNiMjEzOWFkOCIsInVzZXJfaWQiOjF9.mhQP_OW2zLfyDCPplwQyKbfo6Ed9VPfLyOKAdENqOy0";
+export const Home: FC = () => {
+    const { accessToken, logout } = useAuthContext();
+    const [user, setUser] = useState<User>({
+        id: 0,
+        username: "",
+        email: "",
+    });
+
+    useEffect(() => {
+        if (!accessToken) {
+            return;
+        }
+
+        (async () => {
+            const state = await getUserInfo(accessToken);
+            setUser(state);
+        })();
+    }, [accessToken]);
+
     return (
         <div className="Home">
-            <p>Create Advert</p>
-            <div></div>
+            <User logout={logout} {...user} />
+            <div className="inner">
+                <div className="left"></div>
+                <div className="right">
+                    <CreateAdvert />
+                </div>
+            </div>
         </div>
     );
 };
