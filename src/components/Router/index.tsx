@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { About } from "../../pages/About";
 import { Home } from "../../pages/Home";
 import { Landing } from "../../pages/Landing";
@@ -7,6 +7,7 @@ import { Login } from "../../pages/Login";
 import { Search } from "../../pages/Search";
 import { Signin } from "../../pages/SignIn";
 import { Header } from "../Header";
+import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 import "./style.scss";
 
 export const LANDING_PATH = "/";
@@ -36,9 +37,9 @@ export const Router: FC = () => {
                 <Route path={SIGNIN_PATH}>
                     <Signin />
                 </Route>
-                <Route path={HOME_PAGE}>
+                <PrivateRoute path={HOME_PAGE}>
                     <Home />
-                </Route>
+                </PrivateRoute>
             </Switch>
         </BrowserRouter>
     );
