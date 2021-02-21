@@ -5,7 +5,7 @@ import { About } from "../../pages/About";
 import { Home } from "../../pages/Home";
 import { Landing } from "../../pages/Landing";
 import { Login } from "../../pages/Login";
-import { SignIn } from "../../pages/SignIn";
+import { Signin } from "../../pages/SignIn";
 import { Header } from "../Header";
 import { Logo } from "../Logo";
 import "./style.scss";
@@ -72,7 +72,7 @@ export const Router: FC = () => {
                     <Login />
                 </Route>
                 <Route path={SIGNIN_PATH}>
-                    <SignIn />
+                    <Signin />
                 </Route>
                 <Route path={HOME_PAGE}>
                     <Home />

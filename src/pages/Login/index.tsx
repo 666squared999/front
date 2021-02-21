@@ -84,7 +84,7 @@ export const Login: FC = () => {
                         onChange={passwordInputHandler}
                         error={!!error}
                     />
-                    <p>{error ?? "&nbsp;"}</p>
+                    <p>{error}</p>
                     <Button
                         variant="contained"
                         color="secondary"
