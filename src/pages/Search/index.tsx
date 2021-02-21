@@ -4,72 +4,96 @@ import { SearchFilters } from "../../components/SearchFilters";
 import { FilterData } from "../../utils/types";
 import "./style.scss";
 
-const initialData: FilterData = {
+export const initialData: FilterData = {
     animalType: "",
     sexType: "",
     description: "",
-    // checkBoxFeature: [
-    //     {
-    //         key: "Wool",
-    //         value: false,
-    //     },
-    //     {
-    //         key: "",
-    //         value: false,
-    //     },
-    // ],
     features: [
         {
-            key: "Short wool",
-            value: false,
+            key: "Wool length",
+            conflicting: false,
+            featureTypes: [
+                {
+                    key: "Long",
+                    value: false,
+                },
+                {
+                    key: "Short",
+                    value: false,
+                },
+                {
+                    key: "No wool",
+                    value: false,
+                },
+            ],
         },
         {
-            key: "Long wool",
-            value: false,
+            key: "Tail length",
+            conflicting: false,
+            featureTypes: [
+                {
+                    key: "Long",
+                    value: false,
+                },
+                {
+                    key: "Short",
+                    value: false,
+                },
+                {
+                    key: "No tail",
+                    value: false,
+                },
+            ],
         },
         {
-            key: "Short tail",
-            value: false,
+            key: "Ears types",
+            conflicting: false,
+            featureTypes: [
+                {
+                    key: "Sharp",
+                    value: false,
+                },
+                {
+                    key: "Sloping",
+                    value: false,
+                },
+                {
+                    key: "No ears",
+                    value: false,
+                },
+            ],
         },
         {
-            key: "Long tail",
-            value: false,
+            key: "Face types",
+            conflicting: true,
+            featureTypes: [
+                {
+                    key: "Oblong",
+                    value: false,
+                },
+                {
+                    key: "Flat",
+                    value: false,
+                },
+            ],
         },
         {
-            key: "Without tail",
-            value: false,
-        },
-        {
-            key: "Sharp ears",
-            value: false,
-        },
-        {
-            key: "Sloping ears",
-            value: false,
-        },
-        {
-            key: "Long face",
-            value: false,
-        },
-        {
-            key: "Oblong face",
-            value: false,
-        },
-        {
-            key: "Short face",
-            value: false,
-        },
-        {
-            key: "Spotted",
-            value: false,
-        },
-        {
-            key: "Striped",
-            value: false,
-        },
-        {
-            key: "Monotonous",
-            value: false,
+            key: "Color",
+            conflicting: false,
+            featureTypes: [
+                {
+                    key: "Spotted",
+                    value: false,
+                },
+                {
+                    key: "Striped",
+                    value: false,
+                },
+                {
+                    key: "Monotonous",
+                    value: false,
+                },
+            ],
         },
     ],
 };

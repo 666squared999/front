@@ -7,7 +7,13 @@ import {
     TextField,
 } from "@material-ui/core";
 import "./style.scss";
-import { AnimalType, FilterData, SexType } from "../../utils/types";
+import {
+    AnimalType,
+    FeatureType,
+    FeatureTypesType,
+    FilterData,
+    SexType,
+} from "../../utils/types";
 
 const animalTypes = ["dog", "cat", "parrot", "other", ""];
 const sexTypes = ["male", "female", "unknown", ""];
@@ -43,11 +49,39 @@ export const SearchFilters = ({
         setData({ ...data, sexType: event.target.value as SexType });
     };
 
-    const handleFeatureChange = (key: string): void => {
+    const handleFeatureChange = (
+        featureKey: FeatureType,
+        typeKey: FeatureTypesType,
+    ) => {
         const newFeatures = [...data.features];
-        const searchedKeyIndex = newFeatures.findIndex((el) => el.key === key);
-        newFeatures[searchedKeyIndex].value = !newFeatures[searchedKeyIndex]
-            .value;
+        const searchedFeatureKeyIndex = newFeatures.findIndex(
+            (el) => el.key === featureKey,
+        );
+        const searchedFeatureTypeKeyIndex = newFeatures[
+            searchedFeatureKeyIndex
+        ].featureTypes.findIndex((el) => el.key === typeKey);
+        if (newFeatures[searchedFeatureKeyIndex].conflicting) {
+            newFeatures[searchedFeatureKeyIndex].featureTypes.map(
+                ({ key }, i) => {
+                    if (key === typeKey) {
+                        newFeatures[searchedFeatureKeyIndex].featureTypes[
+                            i
+                        ].value = !newFeatures[searchedFeatureKeyIndex]
+                            .featureTypes[i].value;
+                    } else {
+                        newFeatures[searchedFeatureKeyIndex].featureTypes[
+                            i
+                        ].value = false;
+                    }
+                },
+            );
+        } else {
+            newFeatures[searchedFeatureKeyIndex].featureTypes[
+                searchedFeatureTypeKeyIndex
+            ].value = !newFeatures[searchedFeatureKeyIndex].featureTypes[
+                searchedFeatureTypeKeyIndex
+            ].value;
+        }
         setData({ ...data, features: newFeatures });
     };
 
@@ -93,22 +127,28 @@ export const SearchFilters = ({
                     variant="outlined"
                 />
                 <div>
-                    {features.map(({ key, value }) => {
-                        return (
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        value={value}
-                                        onChange={() =>
-                                            handleFeatureChange(key)
-                                        }
-                                        color="primary"
-                                    />
-                                }
-                                label={key}
-                                labelPlacement="start"
-                            />
-                        );
+                    {features.map(({ key: featureKey, featureTypes }) => {
+                        return featureTypes.map(({ value, key: typeKey }) => {
+                            return (
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={value}
+                                            onChange={(_, checked) => {
+                                                handleFeatureChange(
+                                                    featureKey,
+                                                    typeKey,
+                                                );
+                                            }}
+                                            color="primary"
+                                        />
+                                    }
+                                    key={featureKey + typeKey}
+                                    label={typeKey}
+                                    labelPlacement="start"
+                                />
+                            );
+                        });
                     })}
                 </div>
             </div>
