@@ -51,4 +51,11 @@ export const getUserInfo = async (token: string): Promise<User> =>
         .then((response) => response.json())
         .catch(console.log);
 
+export const createAdvert = async (token: string, data: any) =>
+    request("api/v1/adverts/", "POST", data, {
+        Authorization: `Bearer ${token}`,
+    })
+        .then((response) => response.json())
+        .catch(console.log);
+
 export default request;

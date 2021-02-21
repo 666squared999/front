@@ -1,0 +1,39 @@
+@import "../../assets/style.scss";
+
+.CreateAdvert {
+    border-radius: 1rem;
+    border-width: 1px;
+    border-style: solid;
+    max-width: 480px;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        align-self: stretch;
+        padding: 1rem;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-self: stretch;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    span {
+        margin-right: 1rem;
+    }
+
+    .input {
+        width: 300px;
+        max-width: 300px;
+    }
+
+    .button {
+        margin-top: 0.5rem;
+    }
+}

@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { getUserInfo } from "../../api/requests";
+import { CreateAdvert } from "../../components/CreateAdvert";
 import { User } from "../../components/User";
 import { useAuthContext } from "../../store/AuthContext";
 import "./style.scss";
@@ -26,6 +27,12 @@ export const Home: FC = () => {
     return (
         <div className="Home">
             <User logout={logout} {...user} />
+            <div className="inner">
+                <div className="left"></div>
+                <div className="right">
+                    <CreateAdvert />
+                </div>
+            </div>
         </div>
     );
 };

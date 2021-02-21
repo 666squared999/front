@@ -5,7 +5,7 @@ import { Home } from "../../pages/Home";
 import { Landing } from "../../pages/Landing";
 import { Login } from "../../pages/Login";
 import { Search } from "../../pages/Search";
-import { Signin } from "../../pages/SignIn";
+import { Signin } from "../../pages/Signin";
 import { useAuthContext } from "../../store/AuthContext";
 import { Header } from "../Header";
 import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
