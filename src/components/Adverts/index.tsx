@@ -6,9 +6,9 @@ import "./style.scss";
 const data: Advert[] = [
     {
         id: 1,
-        title: "1111",
+        title: "Missuri",
         photo_urls: ["image.png"],
-        location: "here",
+        location: "Washington",
         animal_type: "cat",
         breed: "muimur",
         color: "red",
@@ -30,7 +30,7 @@ const data: Advert[] = [
                     },
                     {
                         key: "No wool",
-                        value: false,
+                        value: true,
                     },
                 ],
             },
@@ -106,10 +106,410 @@ const data: Advert[] = [
     },
     {
         id: 2,
-        title: "1111",
+        title: "Reks",
         photo_urls: ["image.png"],
-        location: "here",
-        animal_type: "cat",
+        location: "Lwiw",
+        animal_type: "dog",
+        breed: "muimur",
+        color: "red",
+        sex: "female",
+        description: "hii",
+        type: "found",
+        features: [
+            {
+                key: "Wool length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: true,
+                    },
+                    {
+                        key: "Short",
+                        value: false,
+                    },
+                    {
+                        key: "No wool",
+                        value: true,
+                    },
+                ],
+            },
+            {
+                key: "Tail length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: false,
+                    },
+                    {
+                        key: "Short",
+                        value: true,
+                    },
+                    {
+                        key: "No tail",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Ears types",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Sharp",
+                        value: false,
+                    },
+                    {
+                        key: "Sloping",
+                        value: false,
+                    },
+                    {
+                        key: "No ears",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Face types",
+                conflicting: true,
+                featureTypes: [
+                    {
+                        key: "Oblong",
+                        value: false,
+                    },
+                    {
+                        key: "Flat",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Color",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Spotted",
+                        value: false,
+                    },
+                    {
+                        key: "Striped",
+                        value: false,
+                    },
+                    {
+                        key: "Monotonous",
+                        value: false,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        id: 3,
+        title: "Pizza",
+        photo_urls: ["image.png"],
+        location: "Dominos",
+        animal_type: "parrot",
+        breed: "muimur",
+        color: "red",
+        sex: "female",
+        description: "hii",
+        type: "found",
+        features: [
+            {
+                key: "Wool length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: true,
+                    },
+                    {
+                        key: "Short",
+                        value: false,
+                    },
+                    {
+                        key: "No wool",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Tail length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: false,
+                    },
+                    {
+                        key: "Short",
+                        value: true,
+                    },
+                    {
+                        key: "No tail",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Ears types",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Sharp",
+                        value: false,
+                    },
+                    {
+                        key: "Sloping",
+                        value: false,
+                    },
+                    {
+                        key: "No ears",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Face types",
+                conflicting: true,
+                featureTypes: [
+                    {
+                        key: "Oblong",
+                        value: true,
+                    },
+                    {
+                        key: "Flat",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Color",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Spotted",
+                        value: false,
+                    },
+                    {
+                        key: "Striped",
+                        value: true,
+                    },
+                    {
+                        key: "Monotonous",
+                        value: false,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        id: 4,
+        title: "Kiss",
+        photo_urls: ["image.png"],
+        location: "Wiskas",
+        animal_type: "parrot",
+        breed: "muimur",
+        color: "red",
+        sex: "female",
+        description: "hii",
+        type: "found",
+        features: [
+            {
+                key: "Wool length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: true,
+                    },
+                    {
+                        key: "Short",
+                        value: false,
+                    },
+                    {
+                        key: "No wool",
+                        value: true,
+                    },
+                ],
+            },
+            {
+                key: "Tail length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: false,
+                    },
+                    {
+                        key: "Short",
+                        value: true,
+                    },
+                    {
+                        key: "No tail",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Ears types",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Sharp",
+                        value: false,
+                    },
+                    {
+                        key: "Sloping",
+                        value: true,
+                    },
+                    {
+                        key: "No ears",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Face types",
+                conflicting: true,
+                featureTypes: [
+                    {
+                        key: "Oblong",
+                        value: false,
+                    },
+                    {
+                        key: "Flat",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Color",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Spotted",
+                        value: false,
+                    },
+                    {
+                        key: "Striped",
+                        value: false,
+                    },
+                    {
+                        key: "Monotonous",
+                        value: false,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        id: 5,
+        title: "Ya",
+        photo_urls: ["image.png"],
+        location: "Dominos",
+        animal_type: "parrot",
+        breed: "muimur",
+        color: "red",
+        sex: "female",
+        description: "hii",
+        type: "found",
+        features: [
+            {
+                key: "Wool length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: true,
+                    },
+                    {
+                        key: "Short",
+                        value: false,
+                    },
+                    {
+                        key: "No wool",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Tail length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: false,
+                    },
+                    {
+                        key: "Short",
+                        value: true,
+                    },
+                    {
+                        key: "No tail",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Ears types",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Sharp",
+                        value: false,
+                    },
+                    {
+                        key: "Sloping",
+                        value: false,
+                    },
+                    {
+                        key: "No ears",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Face types",
+                conflicting: true,
+                featureTypes: [
+                    {
+                        key: "Oblong",
+                        value: false,
+                    },
+                    {
+                        key: "Flat",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Color",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Spotted",
+                        value: false,
+                    },
+                    {
+                        key: "Striped",
+                        value: false,
+                    },
+                    {
+                        key: "Monotonous",
+                        value: false,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        id: 6,
+        title: "228",
+        photo_urls: ["image.png"],
+        location: "Dominos",
+        animal_type: "parrot",
         breed: "muimur",
         color: "red",
         sex: "female",
