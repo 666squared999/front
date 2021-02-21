@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import { About } from "../../pages/About";
+import { AdvertInfo } from "../../pages/AdvertInfo";
 import { Home } from "../../pages/Home";
 import { Landing } from "../../pages/Landing";
 import { Login } from "../../pages/Login";
@@ -15,6 +16,7 @@ export const ABOUT_PATH = "/about";
 export const LOGIN_PATH = "/login";
 export const SIGNIN_PATH = "/signin";
 export const HOME_PAGE = "/home";
+export const ADVERTINFO_PAGE = "/advert";
 
 export const Router: FC = () => {
     return (
@@ -38,6 +40,9 @@ export const Router: FC = () => {
                 </Route>
                 <Route path={HOME_PAGE}>
                     <Home />
+                </Route>
+                <Route path={ADVERTINFO_PAGE}>
+                    <AdvertInfo />
                 </Route>
             </Switch>
         </BrowserRouter>

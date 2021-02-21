@@ -5,6 +5,7 @@ import "./style.scss";
 
 const data: Advert[] = [
     {
+        id: 1,
         title: "1111",
         photo_urls: ["image.png"],
         location: "here",
@@ -16,12 +17,95 @@ const data: Advert[] = [
         type: "found",
         features: [
             {
-                key: "Short wool",
-                value: false,
+                key: "Wool length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: false,
+                    },
+                    {
+                        key: "Short",
+                        value: true,
+                    },
+                    {
+                        key: "No wool",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Tail length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: true,
+                    },
+                    {
+                        key: "Short",
+                        value: false,
+                    },
+                    {
+                        key: "No tail",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Ears types",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Sharp",
+                        value: false,
+                    },
+                    {
+                        key: "Sloping",
+                        value: false,
+                    },
+                    {
+                        key: "No ears",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Face types",
+                conflicting: true,
+                featureTypes: [
+                    {
+                        key: "Oblong",
+                        value: false,
+                    },
+                    {
+                        key: "Flat",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Color",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Spotted",
+                        value: false,
+                    },
+                    {
+                        key: "Striped",
+                        value: false,
+                    },
+                    {
+                        key: "Monotonous",
+                        value: false,
+                    },
+                ],
             },
         ],
     },
     {
+        id: 2,
         title: "1111",
         photo_urls: ["image.png"],
         location: "here",
@@ -33,25 +117,90 @@ const data: Advert[] = [
         type: "found",
         features: [
             {
-                key: "Short wool",
-                value: false,
+                key: "Wool length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: true,
+                    },
+                    {
+                        key: "Short",
+                        value: false,
+                    },
+                    {
+                        key: "No wool",
+                        value: false,
+                    },
+                ],
             },
-        ],
-    },
-    {
-        title: "1111",
-        photo_urls: ["image.png"],
-        location: "here",
-        animal_type: "cat",
-        breed: "muimur",
-        color: "red",
-        sex: "unknown",
-        description: "hii",
-        type: "found",
-        features: [
             {
-                key: "Short wool",
-                value: false,
+                key: "Tail length",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Long",
+                        value: false,
+                    },
+                    {
+                        key: "Short",
+                        value: true,
+                    },
+                    {
+                        key: "No tail",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Ears types",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Sharp",
+                        value: false,
+                    },
+                    {
+                        key: "Sloping",
+                        value: false,
+                    },
+                    {
+                        key: "No ears",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Face types",
+                conflicting: true,
+                featureTypes: [
+                    {
+                        key: "Oblong",
+                        value: false,
+                    },
+                    {
+                        key: "Flat",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                key: "Color",
+                conflicting: false,
+                featureTypes: [
+                    {
+                        key: "Spotted",
+                        value: false,
+                    },
+                    {
+                        key: "Striped",
+                        value: false,
+                    },
+                    {
+                        key: "Monotonous",
+                        value: false,
+                    },
+                ],
             },
         ],
     },
@@ -65,29 +214,48 @@ export const Adverts = ({ filterData }: IProps) => {
     const [advertsData, setAdvertsData] = useState<Advert[]>([]);
     useEffect(() => {
         const handleMount = async () => {
-            await new Promise((res, _) => setTimeout(res, 1100));
+            await new Promise((res, _) => setTimeout(res, 1000));
             const withFilteredFeatures = data.filter((advert) => {
-                // if (filterData.sexType === "unknown") {
-                //     return true;
-                // }
-                // return advert.sex === filterData.sexType;
-                // advert.features.map(feature => {
-                //     if(feature.value) {
-
-                //     }
-                // })
-                return true;
+                const isValid = filterData.features.every(
+                    ({ featureTypes, key }) => {
+                        const shouldFilter = featureTypes.some(
+                            ({ value }) => value,
+                        );
+                        console.log(shouldFilter, "featureTypes");
+                        if (shouldFilter) {
+                            const advertFeatureKeyIndex = advert.features.findIndex(
+                                (el) => el.key === key,
+                            );
+                            const isValid = featureTypes.some(
+                                ({ value, key }) => {
+                                    const advertFeatureTypeKeyIndex = advert.features[
+                                        advertFeatureKeyIndex
+                                    ].featureTypes.findIndex(
+                                        (el) => el.key === key,
+                                    );
+                                    if (
+                                        advert.features[advertFeatureKeyIndex]
+                                            .featureTypes[
+                                            advertFeatureTypeKeyIndex
+                                        ].value === value &&
+                                        value
+                                    ) {
+                                        return true;
+                                    }
+                                },
+                            );
+                            return isValid;
+                        } else {
+                            return true;
+                        }
+                    },
+                );
+                return isValid;
             });
-            // const withFilteredType = withFilteredSex.filter((advert) => {
-            //     return advert.sex === filterData.animalType;
-            // });
-            // const withFilteredType = withFilteredSex.filter((advert) => {
-            //     return advert.sex === filterData.;
-            // });
             setAdvertsData(withFilteredFeatures);
         };
         handleMount();
-    }, [advertsData, filterData]);
+    }, [filterData]);
 
     // const;
 
@@ -97,7 +265,7 @@ export const Adverts = ({ filterData }: IProps) => {
             {advertsData.length ? (
                 <div className="AdvertsList">
                     {advertsData.map((el) => {
-                        return <AdvertBlock key={el.animal_type} data={el} />;
+                        return <AdvertBlock key={el.id} data={el} />;
                     })}
                 </div>
             ) : (
