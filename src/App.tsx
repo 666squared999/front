@@ -3,6 +3,7 @@ import "./assets/style.scss";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { Router } from "./components/Router";
 import { Footer } from "./components/Footer";
+import { AuthContextProvider, useAuthState } from "./store/AuthContext";
 
 const theme = createMuiTheme({
     palette: {
@@ -16,11 +17,15 @@ const theme = createMuiTheme({
 });
 
 function App() {
+    const auth = useAuthState();
+
     return (
         <div className="App">
             <ThemeProvider theme={theme}>
-                <Router />
-                <Footer />
+                <AuthContextProvider value={auth}>
+                    <Router />
+                    <Footer />
+                </AuthContextProvider>
             </ThemeProvider>
         </div>
     );

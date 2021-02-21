@@ -5,7 +5,7 @@ import { Home } from "../../pages/Home";
 import { Landing } from "../../pages/Landing";
 import { Login } from "../../pages/Login";
 import { Search } from "../../pages/Search";
-import { SignIn } from "../../pages/SignIn";
+import { Signin } from "../../pages/SignIn";
 import { Header } from "../Header";
 import "./style.scss";
 
@@ -34,7 +34,7 @@ export const Router: FC = () => {
                     <Login />
                 </Route>
                 <Route path={SIGNIN_PATH}>
-                    <SignIn />
+                    <Signin />
                 </Route>
                 <Route path={HOME_PAGE}>
                     <Home />
