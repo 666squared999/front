@@ -1,10 +1,12 @@
+import { User } from "../components/User";
+
 const API_URL = "https://api.squared.cf/";
 
 const request = (
     params: string,
     method: Request["method"],
     body?: Record<string, string>,
-    headers?: Request["headers"],
+    headers?: Record<string, string>,
 ): Promise<Response> => {
     return fetch(API_URL + params, {
         mode: "cors",
@@ -23,13 +25,13 @@ const request = (
     });
 };
 
-export const login = async (email: string, password: string) =>
+export const login = (email: string, password: string) =>
     request("api/v1/users/token/", "POST", {
         email,
         password,
     }).then((response) => response.json());
 
-export const signin = async (
+export const signin = (
     username: string,
     email: string,
     password: string,
@@ -41,5 +43,19 @@ export const signin = async (
         username,
         confirmPassword,
     }).then((response) => response.json());
+
+export const getUserInfo = async (token: string): Promise<User> =>
+    request("api/v1/users/me", "GET", undefined, {
+        Authorization: `Bearer ${token}`,
+    })
+        .then((response) => response.json())
+        .catch(console.log);
+
+export const createAdvert = async (token: string, data: any) =>
+    request("api/v1/adverts/", "POST", data, {
+        Authorization: `Bearer ${token}`,
+    })
+        .then((response) => response.json())
+        .catch(console.log);
 
 export default request;
