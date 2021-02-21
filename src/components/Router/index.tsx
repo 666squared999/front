@@ -1,13 +1,14 @@
 import React, { FC } from "react";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { About } from "../../pages/About";
 import { AdvertInfo } from "../../pages/AdvertInfo";
 import { Home } from "../../pages/Home";
 import { Landing } from "../../pages/Landing";
 import { Login } from "../../pages/Login";
 import { Search } from "../../pages/Search";
-import { SignIn } from "../../pages/SignIn";
+import { Signin } from "../../pages/SignIn";
 import { Header } from "../Header";
+import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
 import "./style.scss";
 
 export const LANDING_PATH = "/";
@@ -36,14 +37,11 @@ export const Router: FC = () => {
                     <Login />
                 </Route>
                 <Route path={SIGNIN_PATH}>
-                    <SignIn />
+                    <Signin />
                 </Route>
-                <Route path={HOME_PAGE}>
+                <PrivateRoute path={HOME_PAGE}>
                     <Home />
-                </Route>
-                <Route path={ADVERTINFO_PAGE}>
-                    <AdvertInfo />
-                </Route>
+                </PrivateRoute>
             </Switch>
         </BrowserRouter>
     );
