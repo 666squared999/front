@@ -1,10 +1,13 @@
 import { Button, TextField } from "@material-ui/core";
 import { ChangeEvent, FC, useCallback, useState } from "react";
 import isEmail from "validator/lib/isEmail";
-import { login } from "../../api/requests";
+import { login as loginRequest } from "../../api/requests";
+import { useAuthContext } from "../../store/AuthContext";
 import "./style.scss";
 
 export const Login: FC = () => {
+    const { login } = useAuthContext();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -31,7 +34,7 @@ export const Login: FC = () => {
             return;
         }
 
-        const response = await login(email, password);
+        const response = await loginRequest(email, password);
 
         if (response.detail) {
             setError(response.detail);
@@ -39,8 +42,9 @@ export const Login: FC = () => {
         }
 
         if (response.access) {
+            login(response.access);
         }
-    }, [email, password]);
+    }, [email, login, password]);
 
     const passwordInputHandler = useCallback<
         (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void
