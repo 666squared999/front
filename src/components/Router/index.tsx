@@ -61,7 +61,7 @@ export const Router: FC = () => {
                 </nav>
             </Header>
             <Switch>
-                <Route path={LANDING_PATH}>
+                <Route exact path={LANDING_PATH}>
                     <Landing />
                 </Route>
                 <Route path={SEARCH_PATH}></Route>
