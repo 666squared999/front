@@ -1,0 +1,26 @@
+@import "../../assets/style.scss";
+
+.Wallpaper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    aspect-ratio: 16/8;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("../../assets/images/Landing.png");
+    background-size: cover;
+
+    .container {
+        padding: 4rem;
+        margin-top: auto;
+    }
+
+    p {
+        color: #fff;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .secondLine {
+        margin-top: 2rem;
+    }
+}

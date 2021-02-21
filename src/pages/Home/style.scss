@@ -1,0 +1,14 @@
+@import "../../assets/style.scss";
+
+.Home {
+    padding: 2rem 4rem;
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        .left {
+            margin: 50px 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+}

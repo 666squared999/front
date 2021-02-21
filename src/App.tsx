@@ -1,22 +1,32 @@
 import React from "react";
 import "./assets/style.scss";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { Router } from "./components/Router";
+import { Footer } from "./components/Footer";
+import { AuthContextProvider, useAuthState } from "./store/AuthContext";
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: "#45190E",
+            main: "#943435",
         },
         secondary: {
-            main: "#FF7306",
+            main: "#32237e",
         },
     },
 });
 
 function App() {
+    const auth = useAuthState();
+
     return (
         <div className="App">
-            <ThemeProvider theme={theme}>{}</ThemeProvider>
+            <ThemeProvider theme={theme}>
+                <AuthContextProvider value={auth}>
+                    <Router />
+                    <Footer />
+                </AuthContextProvider>
+            </ThemeProvider>
         </div>
     );
 }
